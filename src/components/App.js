@@ -1,20 +1,24 @@
 import video from "../data/video.js";
+import Player from "./Player.js";
+import Details from "./Details";
+import LikesSection from "./LikesSection.js";
+import Comments from "./Comments.js";
+//import { useState } from "react";
 
 function App() {
   console.log("Here's your data:", video);
+  const {title, embedUrl, views, createdAt, upvotes, downvotes, comments} = video;
+
+  
 
   return (
     <div className="App">
-      <iframe
-        width="919"
-        height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        frameBorder="0"
-        allowFullScreen
-        title="Thinking in React"
-      />
+      <Player url={embedUrl} />
+      <Details title={title} views={views} createdAt={createdAt} />
+      <LikesSection upvotes={upvotes} downvotes={downvotes} />      
+      <Comments comments={comments} />
     </div>
-  );
+  )
 }
 
 export default App;
